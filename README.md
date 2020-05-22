@@ -3,6 +3,8 @@
 Sandbox project for the exercises in the book [Scala with Cats][book].
 Based on the [cats-seed.g8][cats-seed] template by [Underscore][underscore].
 
+adding some text
+
 Copyright Anonymous Aardvark. Licensed [CC0 1.0][license].
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
