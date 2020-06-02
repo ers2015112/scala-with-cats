@@ -1,9 +1,7 @@
 package exercises.chap2
 
 import cats.Monoid
-import cats.instances._
-// for Monoid
-import cats.instances.option._ // for Monoid
+
 import cats.syntax.semigroup._ // for |+|
 
 class SuperAdder{
