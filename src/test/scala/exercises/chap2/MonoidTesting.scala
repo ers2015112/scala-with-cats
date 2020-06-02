@@ -1,3 +1,5 @@
+package exercises.chap2
+
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.must.Matchers
 import cats.Monoid
