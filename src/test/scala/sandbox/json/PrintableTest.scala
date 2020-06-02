@@ -2,8 +2,6 @@ package sandbox.json
 
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.must.Matchers
-
-import Printable._
 import PrintableInstances._
 
 class PrintableTest extends AnyFreeSpec with Matchers {
