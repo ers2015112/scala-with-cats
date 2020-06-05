@@ -28,4 +28,37 @@ class FunctorTesting  extends AnyFreeSpec with Matchers  {
             // res2: String = "248!"
       }
   }
+  "cats functors should compose and lift" in {
+    import cats.Functor
+    import cats.instances.list._
+    import cats.instances.option._
+
+    val list1 = List(1,2,3)
+
+    val list2 = Functor[List].map(list1)(_ * 2)
+    list2 mustBe List(2,4,6)
+
+    val option1 = Option(123)
+
+    val option2 = Functor[Option].map(option1)(_.toString())
+    option2 mustBe Some("123")
+
+    val func = (x: Int) => x + 1
+
+    val liftedFunc = Functor[Option].lift(func)
+
+    liftedFunc(Option(1)) mustBe Some(2)
+  }
+
+  "Cats functors with functions must" in {
+    import cats.instances.function._ // for Functor
+    import cats.syntax.functor._
+  
+    val func1 = (a: Int) => a + 1
+    val func2 = (a: Int) => a * 2
+    val func3 = (a: Int) => s"${a}!"
+    val func4 = func1.map(func2).map(func3)
+
+    func4(123) mustBe "248!"
+  }
 }
