@@ -3,6 +3,12 @@ package exercises.chap3
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.must.Matchers
 
+import cats.Functor
+import cats.instances.option._
+import cats.instances.function._ // for Functor
+import cats.syntax.functor._
+import cats.instances.list._
+    
 class FunctorTesting  extends AnyFreeSpec with Matchers  {
   "Functors must" - {
       "List int map creates list of incremented values" in {
@@ -29,9 +35,7 @@ class FunctorTesting  extends AnyFreeSpec with Matchers  {
       }
   }
   "cats functors should compose and lift" in {
-    import cats.Functor
-    import cats.instances.list._
-    import cats.instances.option._
+
 
     val list1 = List(1,2,3)
 
@@ -51,8 +55,7 @@ class FunctorTesting  extends AnyFreeSpec with Matchers  {
   }
 
   "Cats functors with functions must" in {
-    import cats.instances.function._ // for Functor
-    import cats.syntax.functor._
+
   
     val func1 = (a: Int) => a + 1
     val func2 = (a: Int) => a * 2
@@ -60,5 +63,14 @@ class FunctorTesting  extends AnyFreeSpec with Matchers  {
     val func4 = func1.map(func2).map(func3)
 
     func4(123) mustBe "248!"
+  }
+
+  "Functor math" in {
+    def doMath[F[_]](start: F[Int])
+      (implicit functor: Functor[F]): F[Int] =
+        start.map(n => n + 1 * 2)
+
+
+      doMath(Option(20)) mustBe Some(22)
   }
 }
