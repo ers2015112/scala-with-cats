@@ -100,3 +100,4 @@ join us in our chat room on [Gitter][gitter].
 [sbteclipse]: https://github.com/typesafehub/sbteclipse
 [intellij-idea]: https://www.jetbrains.com/idea
 [intellij-setup]: https://www.jetbrains.com/help/idea/2016.1/getting-started-with-sbt.html#import_project
+some more text
